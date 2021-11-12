@@ -2,24 +2,28 @@
 import './App.css';
 import Home from './component/Home/Home';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
-import AddData from './component/AddData/AddData';
-import UpdateData from './component/Update/UpdateData';
+
 import NotFound from './component/NotFound/NotFound';
 import Header from './component/Home/Header/Header';
 import Login from './component/Login/Login/Login';
 import AuthProvider from './component/context/AuthProvider';
-import PrivateRoute from './component/Login/PrivateRoute/PrivateRoute';
-import Service from './component/Service/Service';
+
+// import Footer from './component/Footer/Footer';
+import Registration from './component/Login/Registration/Registration';
 import MyOrder from './component/MyOrder/MyOrder';
-import ManageOrder from './component/ManageOrder/ManageOrder';
-import Footer from './component/Footer/Footer';
+import PrivateRoute from './component/Login/PrivateRoute/PrivateRoute';
+import Products from './component/Products/Products';
+import MoreProducts from './component/MoreProducrs/MoreProducts';
+import Details from './component/Details/Details';
+
+
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
       <BrowserRouter>
-        <Header></Header>
+        {/* <Header></Header> */}
         <Switch>  
           <Route exact path='/'>
             <Home></Home>
@@ -27,29 +31,32 @@ function App() {
           <Route exact path='/home'>
             <Home></Home>
           </Route>  
-          <Route exact path='/service'>
-            <Service></Service>
+          <Route path='/products'>
+            <Products></Products>
           </Route>  
-          <Route path='/addService'>
-            <AddData></AddData>
-          </Route>
-          <Route path='/updateData'>
-            <UpdateData></UpdateData>
-          </Route>
-          <PrivateRoute path='/myOrder'>
+          <Route path='/moreProducts'>
+            <Header></Header>
+            <MoreProducts></MoreProducts>
+          </Route>  
+          <PrivateRoute exact path='/myOrder'>
             <MyOrder></MyOrder>
-          </PrivateRoute>
-          <PrivateRoute path='/manageOrder'>
-            <ManageOrder></ManageOrder>
-          </PrivateRoute>
+          </PrivateRoute>  
+          <PrivateRoute exact path='/details/:productId'>
+            <Details></Details>
+          </PrivateRoute>  
+            
+          
           <Route path='/login'>
             <Login></Login>
+          </Route>
+          <Route path='/register'>
+            <Registration></Registration>
           </Route>
           <Route path='*'>
             <NotFound></NotFound>
           </Route>
         </Switch>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </BrowserRouter>
       </AuthProvider>
     </div>

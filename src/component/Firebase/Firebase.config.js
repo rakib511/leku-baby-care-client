@@ -1,9 +1,9 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyB4CZekzzCh2C-hxHQZ6tvhkbvsB0eXvmI",
-  authDomain: "mongodb-express-50deb.firebaseapp.com",
-  projectId: "mongodb-express-50deb",
-  storageBucket: "mongodb-express-50deb.appspot.com",
-  messagingSenderId: "482736872807",
-  appId: "1:482736872807:web:87e56bb39b683a4e8ca3c2"
+  apiKey: "AIzaSyCmojYP88rYyMqFv_mcs4H_-MiZHZ2wn34",
+  authDomain: "luke-baby-care.firebaseapp.com",
+  projectId: "luke-baby-care",
+  storageBucket: "luke-baby-care.appspot.com",
+  messagingSenderId: "519244402562",
+  appId: "1:519244402562:web:ec2ede9626234aa6ef099b"
 };
-  export default firebaseConfig;
+export default firebaseConfig;

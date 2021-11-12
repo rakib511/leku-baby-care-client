@@ -1,40 +1,58 @@
-
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link, NavLink } from 'react-router-dom';
+
 import useAuth from '../../hooks/useAuth';
 
 
-const Header = () => {
-    const {user,logOut} = useAuth();
-    return (
-            <>
-            <Navbar bg="dark" variant="dark" sticky="top" collapseOnSelect expand="lg">
-            <Container>
-            <Navbar.Brand href="#home"><span className="text-danger">Tour-X</span></Navbar.Brand>
 
-            <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                    <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/service">Service</Nav.Link>
-                    <Nav.Link as={Link} to="/addService">AddService</Nav.Link>
-                    <Nav.Link as={Link} to="/updateData">UpdateDate</Nav.Link>
-                    <Nav.Link as={Link} to="/myOrder">MyOrder</Nav.Link>
-                    <Nav.Link as={Link} to="/manageOrder">ManageOrder</Nav.Link>
-                    { user?.email?
-                        <button onClick={logOut} className='btn btn-danger'>Logout</button>:
-                    <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                        
+const Header = () => {
+    const {user,logout} = useAuth();
+    return (
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        LUKE BABY CARE
+                    </Typography>
                     
-                        
-                    
-                <Navbar.Text>
-                    Signed in as: <a href="#login">{user.displayName}</a>
-                </Navbar.Text>
-            </Navbar.Collapse>
-            </Container>
-        </Navbar>
-            </>
+                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/home">
+                                    <Button color="inherit">Home</Button>
+                                </NavLink>
+                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/moreProducts">
+                                    <Button color="inherit">MoreProducts</Button>
+                                </NavLink>
+                    {
+                        user?.email ?
+                            <Box>
+                                <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/myOrder">
+                                    <Button color="inherit">MyOrder</Button>
+                                </NavLink>
+                                <Button onClick={logout} color="inherit">Logout</Button>
+                            </Box>
+                            :
+                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/login">
+                                <Button color="inherit">Login</Button>
+                            </NavLink>
+                    }
+                </Toolbar>
+            </AppBar>
+        </Box>
 
     );
 };
